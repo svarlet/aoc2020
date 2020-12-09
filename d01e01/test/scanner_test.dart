@@ -2,9 +2,14 @@ import 'package:test/test.dart';
 
 class Scanner {
   static int scan(List<int> numbers) {
-    final x = numbers.first;
-    final y = numbers.firstWhere((element) => 2020 == element + x);
-    return x * y;
+    for (var i = 0; i < numbers.length; i++) {
+      for (var j = i + 1; j < numbers.length; j++) {
+        if (numbers[i] + numbers[j] == 2020) {
+          return numbers[i] * numbers[j];
+        }
+      }
+    }
+    return -1;
   }
 }
 
@@ -22,5 +27,10 @@ void main() {
   test('Given a list containing 2015, 3, and 5, returns 10075', () {
     const numbers = [2015, 3, 5];
     expect(Scanner.scan(numbers), equals(10075));
+  });
+
+  test('Given a list containing 0, 2012, 8, returns 16096', () {
+    const numbers = [0, 2012, 8];
+    expect(Scanner.scan(numbers), equals(16096));
   });
 }
