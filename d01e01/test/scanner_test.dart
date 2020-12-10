@@ -4,14 +4,25 @@ class Scanner {
   static int scan(List<int> numbers) {
     for (var i = 0; i < numbers.length; i++) {
       for (var j = i + 1; j < numbers.length; j++) {
-        if (numbers[i] + numbers[j] == 2020) {
-          return numbers[i] * numbers[j];
+        final pair = Pair(numbers[i], numbers[j]);
+        if (pair.sum == 2020) {
+          return pair.product;
         }
       }
     }
     throw ArgumentError(
         'The provided list does not contain a pair that sums to 2020.');
   }
+}
+
+class Pair {
+  final int i, j;
+
+  Pair(this.i, this.j);
+
+  int get sum => i + j;
+
+  int get product => i * j;
 }
 
 void main() {
