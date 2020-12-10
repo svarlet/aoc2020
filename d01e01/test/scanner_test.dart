@@ -1,31 +1,5 @@
 import 'package:test/test.dart';
-
-class Scanner {
-  static const desiredSum = 2020;
-
-  static int scan(List<int> numbers) {
-    for (var i = 0; i < numbers.length; i++) {
-      for (var j = i + 1; j < numbers.length; j++) {
-        final pair = Pair(numbers[i], numbers[j]);
-        if (pair.sum == desiredSum) {
-          return pair.product;
-        }
-      }
-    }
-    throw ArgumentError(
-        'The provided list does not contain a pair that sums to 2020.');
-  }
-}
-
-class Pair {
-  final int i, j;
-
-  Pair(this.i, this.j);
-
-  int get sum => i + j;
-
-  int get product => i * j;
-}
+import 'package:d01e01/scanner.dart';
 
 void main() {
   group('Success cases', () {
