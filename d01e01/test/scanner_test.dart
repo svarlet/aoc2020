@@ -15,24 +15,19 @@ class Scanner {
 }
 
 void main() {
-  test('Given a list containing 2020 and 0, returns 0', () {
-    const numbers = [2020, 0];
-    expect(Scanner.scan(numbers), equals(0));
-  });
+  group('Success cases', () {
+    const expectations = {
+      [2020, 0]: 0,
+      [2019, 1]: 2019,
+      [2015, 3, 5]: 10075,
+      [0, 2012, 8]: 16096,
+    };
 
-  test('Given a list containing 2019 and 1, returns 2019', () {
-    const numbers = [2019, 1];
-    expect(Scanner.scan(numbers), equals(2019));
-  });
-
-  test('Given a list containing 2015, 3, and 5, returns 10075', () {
-    const numbers = [2015, 3, 5];
-    expect(Scanner.scan(numbers), equals(10075));
-  });
-
-  test('Given a list containing 0, 2012, 8, returns 16096', () {
-    const numbers = [0, 2012, 8];
-    expect(Scanner.scan(numbers), equals(16096));
+    expectations.forEach((key, value) {
+      test('Given the list $key, returns $value', () {
+        expect(Scanner.scan(key), equals(value));
+      });
+    });
   });
 
   test('Given a list with no 2 elements adding up to 2020, raises an error',
