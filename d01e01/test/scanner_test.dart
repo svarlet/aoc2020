@@ -1,11 +1,13 @@
 import 'package:test/test.dart';
 
 class Scanner {
+  static const desiredSum = 2020;
+
   static int scan(List<int> numbers) {
     for (var i = 0; i < numbers.length; i++) {
       for (var j = i + 1; j < numbers.length; j++) {
         final pair = Pair(numbers[i], numbers[j]);
-        if (pair.sum == 2020) {
+        if (pair.sum == desiredSum) {
           return pair.product;
         }
       }
