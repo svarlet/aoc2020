@@ -9,7 +9,8 @@ class Scanner {
         }
       }
     }
-    return -1;
+    throw ArgumentError(
+        'The provided list does not contain a pair that sums to 2020.');
   }
 }
 
@@ -32,5 +33,10 @@ void main() {
   test('Given a list containing 0, 2012, 8, returns 16096', () {
     const numbers = [0, 2012, 8];
     expect(Scanner.scan(numbers), equals(16096));
+  });
+
+  test('Given a list with no 2 elements adding up to 2020, raises an error',
+      () {
+    expect(() => Scanner.scan([0, 0]), throwsArgumentError);
   });
 }
